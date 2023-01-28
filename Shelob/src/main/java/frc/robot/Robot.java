@@ -16,8 +16,11 @@ import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.LimeLight;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.VideoSource;
 /**
@@ -61,7 +64,24 @@ public class Robot extends TimedRobot {
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-    }
+        LimeLight limeLight = m_robotContainer.getm_limeLight();
+        limeLight.Update_Limelight_Tracking();
+        XboxController xBox = m_robotContainer.getxboxController1();
+        boolean trackTarget = xBox.getAButton();
+        DriveTrain m_drive = m_robotContainer.getm_driveTrain();
+        if (trackTarget)
+        {
+          if (limeLight.hasValidTarget())
+          {
+                m_drive.drive(limeLight.getLLDriveSpeed(),limeLight.getLLTurnSpeed());
+          }
+          else
+          {
+                m_drive.drive(0.0,0.0);
+          }
+        }
+  }
+
 
 
     /**
