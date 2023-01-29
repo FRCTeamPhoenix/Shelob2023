@@ -73,7 +73,8 @@ public class Robot extends TimedRobot {
         {
           if (limeLight.hasValidTarget())
           {
-                m_drive.drive(limeLight.getLLDriveSpeed(),limeLight.getLLTurnSpeed());
+            
+             m_drive.drive(limeLight.getLLDriveSpeed()*-1,limeLight.getLLTurnSpeed());
           }
           else
           {
