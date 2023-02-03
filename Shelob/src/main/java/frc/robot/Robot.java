@@ -69,6 +69,12 @@ public class Robot extends TimedRobot {
         XboxController xBox = m_robotContainer.getxboxController1();
         boolean trackTarget = xBox.getAButton();
         DriveTrain m_drive = m_robotContainer.getm_driveTrain();
+        double takeIn = xBox.getLeftTriggerAxis();
+        m_robotContainer.getm_Intake().takeIn(-1*takeIn);
+
+        double throwSpeed = xBox.getRightTriggerAxis();
+        m_robotContainer.getmBallThrower().throwBall(throwSpeed);;
+
         if (trackTarget)
         {
           if (limeLight.hasValidTarget())
