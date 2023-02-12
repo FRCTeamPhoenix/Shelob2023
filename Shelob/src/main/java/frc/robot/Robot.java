@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.LimeLight;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.VideoSource;
+//import edu.wpi.first.cscore.VideoSource;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -66,13 +66,14 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
         LimeLight limeLight = m_robotContainer.getm_limeLight();
         limeLight.Update_Limelight_Tracking();
-        XboxController xBox = m_robotContainer.getxboxController1();
-        boolean trackTarget = xBox.getAButton();
+        XboxController xbox_driver = m_robotContainer.getxboxDriver();
+        XboxController xbox_operator = m_robotContainer.getxboxOperator();
+        boolean trackTarget = xbox_driver.getAButton();
         DriveTrain m_drive = m_robotContainer.getm_driveTrain();
-        double takeIn = xBox.getLeftTriggerAxis();
+        double takeIn = xbox_operator.getLeftTriggerAxis();
         m_robotContainer.getm_Intake().takeIn(-1*takeIn);
 
-        double throwSpeed = xBox.getRightTriggerAxis();
+        double throwSpeed = xbox_operator.getRightTriggerAxis();
         m_robotContainer.getmBallThrower().throwBall(throwSpeed);;
 
         if (trackTarget)

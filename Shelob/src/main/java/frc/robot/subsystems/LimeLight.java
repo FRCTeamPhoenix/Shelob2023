@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 
 
-import frc.robot.commands.*;
+//import frc.robot.commands.*;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+//import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LimeLight extends SubsystemBase {
@@ -13,7 +13,7 @@ private double m_LimelightDriveCommand = 0.0;
 private double m_LimelightSteerCommand = 0.0;
 private double m_targetArea = 0.0;
 
-    public void LimeLight() {
+    public void limeLight() {
 
     }
 
@@ -39,7 +39,7 @@ private double m_targetArea = 0.0;
 
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
         double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-        double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+        //double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
         double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
         m_targetArea = ta;
 
