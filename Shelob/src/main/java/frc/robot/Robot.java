@@ -64,19 +64,19 @@ public class Robot extends TimedRobot {
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-        LimeLight limeLight = m_robotContainer.getm_limeLight();
-        limeLight.Update_Limelight_Tracking();
+        //LimeLight limeLight = m_robotContainer.getm_limeLight();
+        //limeLight.Update_Limelight_Tracking();
         XboxController xbox_driver = m_robotContainer.getxboxDriver();
-        XboxController xbox_operator = m_robotContainer.getxboxOperator();
+        //XboxController xbox_operator = m_robotContainer.getxboxOperator();
         boolean trackTarget = xbox_driver.getAButton();
         DriveTrain m_drive = m_robotContainer.getm_driveTrain();
-        double takeIn = xbox_operator.getLeftTriggerAxis();
-        m_robotContainer.getm_Intake().takeIn(-1*takeIn);
+        //double takeIn = xbox_operator.getLeftTriggerAxis();
+        //m_robotContainer.getm_Intake().takeIn(-1*takeIn);
 
-        double throwSpeed = xbox_operator.getRightTriggerAxis();
-        m_robotContainer.getmBallThrower().throwBall(throwSpeed);;
+        //double throwSpeed = xbox_operator.getRightTriggerAxis();
+        //m_robotContainer.getmBallThrower().throwBall(throwSpeed);;
 
-        if (trackTarget)
+       /* if (trackTarget)
         {
           if (limeLight.hasValidTarget())
           {
@@ -88,6 +88,7 @@ public class Robot extends TimedRobot {
                 m_drive.drive(0.0,0.0);
           }
         }
+        */
   }
 
 
